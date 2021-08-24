@@ -1,7 +1,7 @@
 import "./App.css";
 import EUFlag from "./images/eu-flag.png";
 import Countries from "./components/Countries";
-import CountryNameTranslation from "./components/CountryNameTranslation";
+import CountryNameTransl from "./components/CountryNameTransl";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         <Route
           exact
           path="/translation/:alpha3Code"
-          component={CountryNameTranslation}
+          component={CountryNameTransl}
         />
       </Router>
     </div>

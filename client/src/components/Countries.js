@@ -1,5 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
 import Country from "./Country";
+import Loader from "../components/loaders/loader";
+import "../styles/loaders/loader.css";
 
 const COUNTRIES_QUERY = gql`
   query CountriesQuery {
@@ -24,8 +26,20 @@ const COUNTRIES_QUERY = gql`
 const Countries = () => {
   const { loading, error, data } = useQuery(COUNTRIES_QUERY);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading)
+    return (
+      <div className="loading m-2">
+        {" "}
+        <Loader />
+        Loading...
+      </div>
+    );
+  if (error)
+    return (
+      <p class="alert alert-danger m-2" role="alert">
+        Error :(
+      </p>
+    );
 
   return (
     <>

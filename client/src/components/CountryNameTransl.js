@@ -1,8 +1,10 @@
 import { useQuery, gql } from "@apollo/client";
 import { Link } from "react-router-dom";
+import Loader from "../components/loaders/loader";
+import "../styles/loaders/loader.css";
 
-const COUNTRY_NAME_QUERY = gql`
-  query CountryNameQuery($alpha3Code: String!) {
+const COUNTRY_NAME_TRANSL_QUERY = gql`
+  query CountryNameTranslQuery($alpha3Code: String!) {
     country(alpha3Code: $alpha3Code) {
       translations {
         de
@@ -20,15 +22,27 @@ const COUNTRY_NAME_QUERY = gql`
   }
 `;
 
-const CountryNameTranslation = ({ match: { params } }) => {
+const CountryNameTransl = ({ match: { params } }) => {
   let { alpha3Code } = params;
 
-  const { loading, error, data } = useQuery(COUNTRY_NAME_QUERY, {
+  const { loading, error, data } = useQuery(COUNTRY_NAME_TRANSL_QUERY, {
     variables: { alpha3Code },
   });
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading)
+    return (
+      <div className="loading mt-2">
+        {" "}
+        <Loader />
+        Loading...
+      </div>
+    );
+  if (error)
+    return (
+      <p class="alert alert-danger m-2" role="alert">
+        Error :(
+      </p>
+    );
 
   const { de, es, fr, ja, it, br, pt, hr, fa } = data.country.translations;
 
@@ -53,4 +67,4 @@ const CountryNameTranslation = ({ match: { params } }) => {
   );
 };
 
-export default CountryNameTranslation;
+export default CountryNameTransl;
