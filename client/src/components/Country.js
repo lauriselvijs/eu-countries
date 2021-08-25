@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 
+/*
+ * Single country item view used to display country information
+ */
+
 const Country = ({
   country: {
     name,

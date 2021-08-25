@@ -3,6 +3,10 @@ import Country from "./Country";
 import Loader from "../components/loaders/loader";
 import "../styles/loaders/loader.css";
 
+/*
+ * Used to create query and looping trough items
+ */
+
 const COUNTRIES_QUERY = gql`
   query CountriesQuery {
     countries {

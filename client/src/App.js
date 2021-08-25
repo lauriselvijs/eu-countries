@@ -4,6 +4,11 @@ import Countries from "./components/Countries";
 import CountryNameTransl from "./components/CountryNameTransl";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+/*
+ * Used to display EU flag, countries and country translations
+ * (/translation/:alpha3Code)
+ */
+
 function App() {
   return (
     <div className="container">

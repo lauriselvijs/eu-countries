@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import Loader from "../components/loaders/loader";
 import "../styles/loaders/loader.css";
 
+/*
+ * Used to create country name translations query and displaying
+ * country translations in different languages
+ */
+
 const COUNTRY_NAME_TRANSL_QUERY = gql`
   query CountryNameTranslQuery($alpha3Code: String!) {
     country(alpha3Code: $alpha3Code) {
